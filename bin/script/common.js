@@ -16,8 +16,6 @@
 		}
 	};
 
-	var xxxx = 123;
-	
-	
 	global.Native = Native;
+
 }(jQuery, window));

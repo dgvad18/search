@@ -1,0 +1,33 @@
+{
+  "name": "biaou_search",
+  "version": "2.0.0",
+  "description": "biaou_search",
+  "main": "bin/index.html",
+  "title": "企典通内部搜索程序",
+  "author": "www.qidito.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SyoryKen/biaou_search/issues"
+  },
+  "homepage": "https://github.com/SyoryKen/biaou_search#readme",
+  "window": {
+    "toolbar": false,
+    "window": 900,
+    "height": 600,
+    "min_width": 900,
+    "min_height": 600,
+    "resizeable": true,
+    "frame": true
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "nodejs": true,
+  "dependencies": {
+    "express": "^4.16.2",
+    "request": "^2.83.0"
+  },
+  "bg-script": "services.js",
+  "show": true,
+  "single-instance": true
+}

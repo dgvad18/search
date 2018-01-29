@@ -116,6 +116,17 @@
 <div class="page-content"></div>
 </body>
 <script>
+	(function($, global, undefined){
+	    var SERVER_PATH = "http://127.0.0.1/";
+	    var Start = {
+	        init: function(){
+
+			}
+		};
+	    document.addEventListener('DOMContentLoaded', function(){
+	        Start.init();
+		});
+	}(jQuery, window));
 	(function($, window, Native, undefined){
 	    var SERVER = 'http://192.168.11.253';
 		var Start = {

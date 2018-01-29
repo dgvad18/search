@@ -31,6 +31,11 @@
 	        _self.addClass('active').siblings().removeClass('active');
 			$('#frame').attr('src', _url);
 		});
+        $.ajax('http://127.0.0.1:8888/', {
+            type: 'GET'
+        }).done(function(data){
+            return alert(data);
+        });
 	}());
 	function setNavStatus(i){
 	    if(!i) return false;
