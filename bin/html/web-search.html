@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../resource/reset.css">
+    <link type="text/css" rel="stylesheet" href="../resource/web-search.css">
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../lib/layer/layer.js"></script>
+    <script src="../script/common.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <form class="search-form" name="search-form">
+            <div class="title"></div>
+            <div class="search-box">
+                <input class="text" name="keyword" autocomplete="off" placeholder="请输入您要查询的商标名称或申请号" id="keyword-box">
+                <button type="submit">开始搜索</button>
+            </div>
+            <div class="search-type">
+                <label class="radio active"><input type="radio" name="type" value="1" checked="checked"></label><span>模糊查询(商标名/申请号)</span>
+                <label class="radio"><input type="radio" name="type" value="3"></label><span>精准查询</span>
+                <label class="radio"><input type="radio" name="type" value="5"></label><span>申请人</span>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    (function(){
+        $('.radio').on('click', function(){
+            $(this).addClass('active').siblings().removeClass('active');
+        });
+        $('form[name="search-form"]').on('submit', function(){
+            var keyword = $('input[name="keyword"]').val(),
+                searchUrl = 'http://192.168.11.253/spider/search/',
+                data = $(this).serialize();
+            if($.trim(keyword) == '' || $.trim(keyword) == null) return Native.dialog.msg('请输入您要查询的商标名称或申请号', 2000), false;
+            window.location.href = searchUrl  + ((searchUrl.indexOf('?') > -1) ? '' : '?') + $(this).serialize();
+            return false;
+        });
+    }());
+</script>
+</html>

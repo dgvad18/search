@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>标友系统商标搜索软件</title>
+    <link type="text/css" rel="stylesheet" href="../resource/reset.css">
+    <link type="text/css" rel="stylesheet" href="../lib/layui/css/layui.css">
+    <link type="text/css" rel="stylesheet" href="../resource/home.css">
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../lib/layer/layer.js"></script>
+    <script src="../lib/layui/layui.js"></script>
+    <script src="../script/common.js"></script>
+</head>
+<body>
+<div class="content">
+    <ul>
+        <li class="func-list" data-url="./bu-search.html" data-index="1">
+            <i class="icon">
+                <svg class="icon" fill="#00ae66" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M192 480a256 256 0 1 1 512 0 256 256 0 0 1-512 0m631.776 362.496l-143.2-143.168A318.464 318.464 0 0 0 768 480c0-176.736-143.264-320-320-320S128 303.264 128 480s143.264 320 320 320a318.016 318.016 0 0 0 184.16-58.592l146.336 146.368c12.512 12.48 32.768 12.48 45.28 0 12.48-12.512 12.48-32.768 0-45.28"></path></svg>
+                <span class="text">内部商标搜素
+                    <br/>
+                    <strong>数据来源于标友网</strong>
+                </span>
+            </i>
+        </li>
+        <li class="func-list" data-url="./web-search.html" data-index="2">
+            <i class="icon">
+                <svg class="icon" fill="#5b4b9f" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M823.776 842.496l-143.2-143.168A318.464 318.464 0 0 0 768 480c0-176.736-143.264-320-320-320S128 303.264 128 480s143.264 320 320 320a318.016 318.016 0 0 0 184.16-58.592l146.336 146.368c12.512 12.48 32.768 12.48 45.28 0 12.48-12.512 12.48-32.768 0-45.28"></path></svg>
+                <span class="text">商标信息查询
+                    <br/>
+                    <strong>数据来源于网络<br/>最终结果以商标局为准</strong>
+                </span>
+            </i>
+        </li>
+        <li class="func-list" data-url="./upload-product.html" data-index="3">
+            <i class="icon">
+                <svg class="icon" fill="#db4c3f" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M131.339914 423.017198c-9.52111 9.670597-9.400291 25.229558 0.270306 34.750668 9.670597 9.522134 25.229558 9.401315 34.750668-0.269282l320.722863-325.740925 0 798.397108c0 13.5716 11.001648 24.573248 24.573248 24.573248 13.5716 0 24.573248-11.001648 24.573248-24.573248L536.230246 135.522485l315.80719 320.551874c9.523157 9.667525 25.084167 9.783224 34.750668 0.259043 9.667525-9.524181 9.784248-25.083143 0.259043-34.750668L552.305246 81.813557c-11.058985-11.331339-25.865391-17.688643-41.702849-17.905707-0.277473-0.004096-0.554946-0.005119-0.832419-0.005119-15.559985 0-30.237381 5.957989-41.412066 16.831651-0.124914 0.121842-0.249828 0.245732-0.372694 0.370646L131.339914 423.017198z"></path></svg>
+                <span class="text">商标上传
+                    <br/>
+                    <strong>只需注册证号即可上传</strong>
+                </span>
+            </i>
+        </li>
+    </ul>
+    <div class="footer">
+        <span class="text">Powered By Syoryken@sina.com - V1.0</span>
+    </div>
+</div>
+</body>
+<script>
+    (function(){
+        $('.func-list').on('click', function(){
+            var _self = $(this),
+                _url = _self.attr('data-url'),
+                _i = _self.attr('data-index');
+            if(_url == null || _url == '') return Native.dialog.msg('暂未开通此功能', 2500),false;
+            window.parent.setNavStatus(_i),
+                window.location.href = _url;
+        });
+    }());
+</script>
+</html>

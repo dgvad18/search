@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="../resource/reset.css">
+    <link type="text/css" rel="stylesheet" href="../resource/upload-product.css">
+    <title>商标上传</title>
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../lib/jquery.lazyload.min.js"></script>
+    <script src="../lib/layer/layer.js"></script>
+    <script src="../script/common.js"></script>
+    <script src="../script/common.js"></script>
+    <style type="text/css">
+        html,body{
+            width: 100%;
+        }
+        input::-webkit-input-placeholder{
+            font-size: 12px;
+            color: #aaa;
+            font-family: "Microsoft Yahei";
+            line-height: 1.2;
+        }
+        textarea::-webkit-input-placeholder{
+            font-size: 12px;
+            color: #aaa;
+            font-family: "Microsoft Yahei";
+        }
+        .container{
+            display: -webkit-flex;
+            width: 100%;
+            height: 100%;
+            -webkit-align-items: center;
+            -webkit-flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        .container .search-box{
+            width: 100%;
+            background: #f5f5f6;
+            overflow: hidden;
+        }
+        .container .search-box form{
+            width: 700px;
+            margin: 15px auto 0;
+            overflow: hidden;
+        }
+        .container .search-box .box{
+            width: 100%;
+            margin-bottom: 15px;
+            display: -webkit-flex;
+            -webkit-align-items: flex-start;
+        }
+        .container .search-box .box .title{
+            float: left;
+            width: 122px;
+            padding: 15px 0;
+            font-size: 14px;
+            color: #394043;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+        .container .search-box .box .val{
+            float: left;
+            width: 578px;
+        }
+        .container .search-box .box .val input{
+            float: left;
+            width: 435px;
+            height: 44px;
+            line-height: 4px;
+            color: #394043;
+            background-color: #fff;
+            border-radius: 2px;
+            text-indent: 15px;
+            -webkit-box-shadow: 0 1px 2px -1px rgba(0,0,0,.2);
+        }
+        .container .search-box .box .val button{
+            float: left;
+            width: 100px;
+            height: 44px;
+            margin-left: 15px;
+            background-color: #00ac65;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 2px;
+            -webkit-transition: background-color 0.25s;
+            -webkit-box-shadow: 0 1px 2px -1px rgba(0,0,0,.2);
+            cursor: pointer;
+        }
+        .container .search-box .box .val button:hover{
+            background-color: #1ab475;
+        }
+        .container .search-box .box .val textarea{
+            width: 405px;
+            height: 70px;
+            font-size: 14px;
+            line-height: 1.2;
+            border: none;
+            resize: none;
+            padding: 15px;
+            -webkit-box-shadow: 0 1px 2px -1px rgba(0,0,0,.2);
+            font-family: "Microsoft Yahei";
+            color: #394043;
+            border-radius: 2px;
+        }
+        .start-upload{
+            display: block;
+            width: 202px;
+            line-height: 45px;
+            margin: 0 auto 15px;
+            border-radius: 2px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #00ac65;
+            font-weight: 400;
+            cursor: pointer;
+        }
+        .form-box{
+            width: 100%;
+            overflow: hidden;
+        }
+        .form-box .upload-products{
+            width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .form-box .upload-products .products-list{
+            display: -webkit-flex;
+            width: 100%;
+            margin-top: 20px;
+            -webkit-justify-content: center;
+            -webkit-align-items: center;
+            -webkit-flex-direction: column;
+            overflow: hidden;
+        }
+        .products-list table{
+            width: 100%;
+        }
+        .products-list table thead tr{
+            height: 40px;
+            background: #f4f7f9;
+        }
+        .products-list table thead tr td{
+            line-height: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: #849aae;
+            border: 1px solid #f1f1f1;
+        }
+        .products-list table tbody tr{
+            height: 65px;
+            text-align: center;
+            border: 1px solid #f1f1f1;
+        }
+        .products-list table tbody tr.error{
+            background: url(../resource/image/upload-error.png) no-repeat 0 10px;
+        }
+        .products-list table tbody tr.ok{
+            background: url(../resource/image/upload-ok.png) no-repeat 0 10px;
+        }
+        .products-list tbody tr td{
+            vertical-align: middle;
+            font-size: 13px;
+            border: 1px solid #f1f1f1;
+            color: #394043;
+        }
+        td.classID,td.number{
+            color: #a7a8a9 !important;
+        }
+        table tbody td.price form{
+            display: inline-block;
+            width: 75px;
+            padding-right: 5px;
+        }
+        table tbody td.price form input{
+            width: 100%;
+            height: 24px;
+            border: 1px solid #f1f1f1;
+            text-indent: 10px;
+            font-size: 14px;
+        }
+        table tbody td.price form input::-webkit-input-placeholder{
+            line-height: 22px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="search-box">
+        <form name="getProductInfo">
+            <div class="box keyword-box">
+                <div class="title"><span>注册证号</span></div>
+                <div class="val">
+                    <input name="keyword" type="text" autocomplete="off" placeholder="多个注册证号以英文','隔开">
+                    <button type="submit">获取商标信息</button>
+                </div>
+            </div>
+            <div class="box phone-box">
+                <div class="title"><span>联系电话</span></div>
+                <div class="val">
+                    <input name="phone" type="tel" autocomplete="off" placeholder="可填写业务员联系电话">
+                </div>
+                <ul class="autoTips" style="display: none">
+                    <li class="tips-list">提示1</li>
+                    <li class="tips-list">提示2</li>
+                    <li class="tips-list">提示3</li>
+                    <li class="tips-list">提示4</li>
+                </ul>
+            </div>
+            <div class="box desc-box">
+                <div class="title"><span>备注</span></div>
+                <div class="val">
+                    <textarea name="desc" placeholder="业务员备注信息"></textarea>
+                </div>
+            </div>
+        </form>
+        <button class="start-upload">开始上传</button>
+    </div>
+    <div class="form-box">
+        <div class="upload-products">
+            <div class="products-list">
+                <table>
+                    <thead>
+                    <tr>
+                        <td>注册证号</td>
+                        <td>商标名</td>
+                        <td>商标分类</td>
+                        <td>商标价格</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="title"> </td>
+                        <td class="number"> </td>
+                        <td class="classID"> </td>
+                        <td class="price"> </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    (function(){
+        'use strict';
+        $('form[name="getProductInfo"]').on('submit', function(){
+            var number = $('form[name="getProductInfo"] input[name="keyword"]').val();
+            if(!(/[0-9A-z,]+/).test(number)) return Native.dialog.msg('请输入正确的注册证号', 2000), false;
+            var load = Native.dialog.load();
+            $.ajax('http://192.168.11.253/get/basic/product/', {
+                type: 'GET',
+                dataType: 'JSON',
+                data: $('form[name="getProductInfo"]').serialize()
+            }).then(function(e){
+                Native.dialog.close(load);
+                try{
+                    if(e.status != '0') return Native.dialog.msg(e.msg, 2000), false;
+                    var appendHtml = '';
+                    if(Object.prototype.toString.call(e.data) === '[object Object]'){
+                        appendHtml = '<tr><td class="title">' + e.data.title + '</td><td class="number">' + e.data.number + '</td><td class="classID">' + e.data.className + '</td><td class="price"><form name="upload-product"><input type="tel" name="price" value="0" autocomplete="off"><input type="number" name="number" value="' + e.data.number + '" hidden="hidden" style="display: none"></form><span class="text">万元</span></td></tr>'
+                    }else {
+                        $.each(e.data, function(i, v){
+                            appendHtml += '<tr><td class="title">' + v.title + '</td><td class="number">' + v.number + '</td><td class="classID">' + v.className + '</td><td class="price"><form name="upload-product"><input type="tel" name="price" value="0" autocomplete="off"><input type="number" name="number" value="' + v.number + '" hidden="hidden" style="display: none"></form><span class="text">万元</span></td></tr>';
+                        });
+                    }
+                    $('.products-list table tbody').html(appendHtml);
+                    appendHtml = null;
+                }catch(e){
+                    return Native.dialog.msg('未知错误，商标信息获取失败', 2000), false;
+                }
+            }, function(e){
+                Native.dialog.msg('网络连接失败', 2000),
+                    Native.dialog.close(load);
+                return false;
+            });
+            return false;
+        });
+        $('.start-upload').click(function(){
+            var uploadProductElem = document.querySelectorAll('form[name="upload-product"]'),
+                i = 0, dom;
+            if(!uploadProductElem) return Native.dialog.msg('商标上传列表为空', 2000);
+            Native.dialog.msg('上传中...请勿刷新或关闭页面', 2000);
+            setTimeout(function(){
+                while(dom = uploadProductElem[i]){
+                    var phone = $('input[name="phone"]').val(),
+                        desc = $('input[name="desc"]').val(),
+                        number = dom.querySelector('input[name="number"]').value,
+                        price = dom.querySelector('input[name="price"]').value,
+                        data = {"phone": phone, "desc": desc, "number": number, "price": price};
+                    uploadRequest(data);
+                    i++;
+                }
+                uploadProductElem = null, dom = null;
+            }, 2000);
+        });
+        function uploadRequest(data){
+            $.ajax('http://192.168.11.253/upload/product/', {
+                type: 'POST',
+                dataType: 'JSON',
+                data: data
+            }).done(function(e){
+                if(e.status != '0' && !e.number){
+                    Native.dialog.msg(e.msg, 2000);
+                }else if(e.status != '0' && !!e.number){
+                    Native.dialog.msg('注册证号:' + e.number + e.msg, 2000);
+                    $('input[name="number"]').parents('tr').addClass('error');
+                }
+                Native.dialog.msg('注册证号:' + e.number + e.msg, 2000);
+                $('input[name="number"]').parents('tr').addClass('ok');
+            });
+        }
+    }());
+</script>
+</html>

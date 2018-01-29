@@ -1,0 +1,99 @@
+@charset "utf-8";
+html,body,.container{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+body{
+    background: url(../resource/image/background-image.jpg) no-repeat top center;
+    background-size: auto 100%;
+}
+.container{
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+}
+.content{
+    width: 800px;
+    overflow: hidden;
+    background-color: rgba(20,23,23,.3)!important;
+    border-radius: 2px;
+}
+.search-form{
+    display: -webkit-flex;
+    width: 100%;
+    padding: 20px 0;
+    overflow: hidden;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    -webkit-flex-direction: column;
+}
+.search-form .search-box{
+    width: 700px;
+    height: 55px;
+    overflow: hidden;
+}
+.search-box .text{
+    display: block;
+    float: left;
+    width: 573px;
+    height: 100%;
+    text-indent: 24px;
+    font-size: 14px;
+    color: #808080;
+    background-color: #fff;
+    border-radius: 2px 0 0 2px;
+}
+.search-box button{
+    background: #00ae66;
+    width: 127px;
+    height: 55px;
+    float: right;
+    border: 0;
+    display: block;
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    -webkit-transition: all .3s ease-in-out;
+}
+.search-box button:hover{
+    background: #00b86b;
+}
+input::-webkit-input-placeholder{
+    font-size: 13px;
+    text-indent: 24px;
+    color: #aaa;
+}
+.search-type{
+    display: -webkit-flex;
+    padding: 14px 0 5px;
+    font-size: 14px;
+    color: #ddd;
+}
+.search-type span{
+    padding: 0 10px 0 5px;
+}
+.search-type .radio{
+    display: -webkit-flex;
+    width: 18px;
+    height: 18px;
+    border-radius: 16px;
+    background: url(../resource/image/radio.png) no-repeat center;
+    background-size: 17px;
+    -webkit-transition: background 0.15s;
+    cursor: pointer;
+}
+.search-type .radio.active{
+    background: url(../resource/image/radio-active.png) no-repeat center;
+    background-size: 17px;
+}
+.search-type .radio input{
+    visibility: hidden;
+}
+.title{
+    width: 420px;
+    height: 49px;
+    margin: 30px 0 30px;
+    background: url(../resource/image/tips-title.png) no-repeat center;
+}

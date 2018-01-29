@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link type="text/css" rel="stylesheet" href="./resource/reset.css">
+	<link type="text/css" rel="stylesheet" href="./resource/index.css">
+	<title>标友商标搜索软件 - Powered By Syoryken@sina.com</title>
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/layer/layer.js"></script>
+	<script src="script/common.js"></script>
+</head>
+<body>
+	<div class="menu">
+		<ul class="menu-box">
+			<li class="menu-list animation-transition active" data-url="./html/home.html">首页</li>
+			<li class="menu-list animation-transition" data-url="./html/bu-search.html">内部商标搜索</li>
+			<li class="menu-list animation-transition" data-url="./html/web-search.html">商标信息查询</li>
+			<li class="menu-list animation-transition" data-url="./html/upload-product.html">商标上传</li>
+		</ul>
+	</div>
+	<div class="content box-sizing">
+		<iframe id="frame" src="./html/home.html"></iframe>
+	</div>
+</body>
+<script>
+	(function(){
+	    $('.menu-list').on('click', function(){
+	        var _self = $(this),
+				_url = _self.attr('data-url');
+	        if(_url == null || _url == '') return Native.dialog.msg('暂未开通此功能', 2000), false;
+	        _self.addClass('active').siblings().removeClass('active');
+			$('#frame').attr('src', _url);
+		});
+	}());
+	function setNavStatus(i){
+	    if(!i) return false;
+	    $('.menu-list').removeClass('active').eq(i).addClass('active');
+	}
+</script>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title></title>
+	<link type="text/css" rel="stylesheet" href="../resource/reset.css">
+	<link type="text/css" rel="stylesheet" href="../resource/bu-search.css">
+	<link type="text/css" rel="stylesheet" href="../lib/layui/css/layui.css">
+	<script src="../lib/jquery.min.js"></script>
+	<script src="../lib/jquery.lazyload.min.js"></script>
+	<script src="../lib/layer/layer.js"></script>
+	<script src="../lib/layui/layui.js"></script>
+	<script src="../script/common.js"></script>
+	<style type="text/css">
+		body{
+			width: 100%;
+			height: 100%;
+			padding: 10px;
+			overflow: scroll;
+		}
+	</style>
+</head>
+<body class="box-sizing">
+<fieldset class="layui-elem-field site-demo-button box-sizing">
+	<legend>商标筛选</legend>
+	<dl>
+		<dd class="class">
+			<div class="title">商标分类：</div>
+			<ul class="list"></ul>
+		</dd>
+		<dd class="type">
+			<div class="title">类型：</div>
+			<ul class="list"></ul>
+		</dd>
+		<dd class="price">
+			<div class="title">价格：</div>
+			<ul class="list">
+				<li data-index="0">不限</li>
+				<li data-index="0,0.9999">1万以下</li>
+				<li data-index="1,3">1-3万</li>
+				<li data-index="3,5">3-5万</li>
+				<li data-index="5,10">5-10万</li>
+				<li data-index="10,9999">10万以上</li>
+				<div class="range">
+					<input name="low" type="tel" value="">
+					<span>万元&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+					<input name="heat" type="tel" value="">
+					<span>万元</span>
+				</div>
+				<button class="range-submit range-btn">确定</button>
+				<button class="range-submit clear-range">清除价格</button>
+			</ul>
+		</dd>
+		<!--<dd class="time">
+			<div class="title">注册时间：</div>
+			<ul class="list">
+				<li data-value="0">不限</li>
+				<li data-value="1">1年以上</li>
+				<li data-value="2">2年以上</li>
+				<li data-value="3">3年以上</li>
+			</ul>
+		</dd>-->
+		<dd class="group">
+			<div class="title">类似群组：</div>
+			<ul class="list">
+				<li data-value="0101">0101</li>
+				<li data-value="0102">0102</li>
+				<li data-value="0103">0103</li>
+				<li data-value="0104">0104</li>
+				<li data-value="0105">0105</li>
+				<li data-value="0106">0106</li>
+				<li data-value="0107">0107</li>
+				<li data-value="0108">0108</li>
+				<li data-value="0109">0109</li>
+				<li data-value="0110">0110</li>
+				<li data-value="0111">0111</li>
+				<li data-value="0112">0112</li>
+				<li data-value="0113">0113</li>
+				<li data-value="0114">0114</li>
+				<li data-value="0115">0115</li>
+				<li data-value="0116">0116</li>
+				<li data-value="0117">0117</li>
+			</ul>
+		</dd>
+		<dd class="keyword">
+			<div class="title">关键字</div>
+			<div class="keyword-input">
+				<form action="http://192.168.11.253/productsList/" name="search-form" class="search-form" method="get">
+					<input name="keyword" type="text" placeholder="请输入您要搜索的关键字">
+					<input name="class" type="text" hidden="hidden" style="display: none">
+					<input name="type" type="text" hidden="hidden" style="display: none">
+					<input name="price-range" type="text" hidden="hidden" style="display: none">
+					<input name="group" type="text" hidden="hidden" style="display: none">
+					<input name="page" type="text" hidden="hidden" style="display: none">
+					<button class="submit"><i class="icon"></i><span>提交</span></button>
+					<button class="submit clear-condition" type="button"><i class="icon"></i><span>清空条件</span></button>
+				</form>
+			</div>
+		</dd>
+	</dl>
+</fieldset>
+<article class="products">
+	<h1 class="result">搜索结果：<strong class="count">共12345条</strong></h1>
+	<div class="field">
+		<span class="id">注册证号</span>
+		<span class="name">商标名</span>
+		<span class="price">价格</span>
+		<span class="class">类别</span>
+		<span class="group">类似群组</span>
+		<span class="time">联系电话</span>
+		<span class="pic">商标图片</span>
+		<span class="see">查看</span>
+	</div>
+	<dl></dl>
+</article>
+<div class="page-content"></div>
+</body>
+<script>
+	(function($, window, Native, undefined){
+	    var SERVER = 'http://192.168.11.253';
+		var Start = {
+		    Ca: SERVER + '/classList/',
+			Tl: SERVER + '/typeList/',
+			Pl: SERVER + '/productsList/',
+			Gl: SERVER + '/groupList/',
+		    J: function(u, e){
+                var t = 'jsonpCallback_n_' + parseInt(Math.random() * 1000000),
+                    s = u + t;
+                Start.JSP(s, t, function(r){
+                    e(r);
+                });
+				return this;
+			},
+            JP: function(u, p, e){
+		        var t = 'jsonpCallback_y_' + parseInt(Math.random() * 1000000),
+                    s = u + t + p;
+		        Start.JSP(s, t, function(r){
+		            e(r);
+                });
+		        return this;
+            },
+            JSP: function(u, i, e){
+                var s = document.createElement('script');
+                s.src = u;
+                window[i] = function(r){
+                    e(r);
+                };
+                document.body.appendChild(s),
+                    document.body.removeChild(s);
+            },
+			C: function(){
+                Start.J(Start.Ca, function(e){
+                    var a = '';
+                    $.each(e, function(i, v){
+						if((/^[\d]{1}$/).test(v.classID)){
+                            a += '<li data-index="' + v.classID + '">0' + v.classID + '类 ' + v.className + '</li>';
+						}else {
+                            a += '<li data-index="' + v.classID + '">' + v.classID + '类 ' + v.className + '</li>';
+						}
+                    });
+                    $('.class .list').html(a);
+                    GE('1');
+                    $('.class .list li').on('click', function(){
+                        var _self = $(this),
+                            i = _self.attr('data-index'),
+                            nV = Start.GF('class'),
+                            nVArr = (nV == '' || nV == null) ? new Array() : nV.split(',');
+                        if(_self.hasClass('active') && nVArr.indexOf(i) > -1){
+                            nVArr.remove(i);
+                            _self.removeClass('active');
+                            var gVArr = (Start.GF('group')).split(',');
+                            if(gVArr != '' || gVArr != null){
+                                GC(i, function(e){
+                                    for(var j = 0; j < e.length; j++){
+                                        gVArr.remove(e[j]);
+                                    }
+                                });
+                            }
+                        }else{
+                            nVArr.push(i);
+                            _self.addClass('active');
+                            GE(i);
+                        }
+                        Start.SF('class', nVArr.join(','));
+                    });
+                    function GE(c){
+                        GL(c, function(e){
+                            var h = '';
+                            $.each(e.data, function(i, v){
+                                h += '<li data-value="' + v.code + '">' + v.code + '</li>';
+                            });
+                            $('.group .list').html(h);
+                            $('.group .list li').on('click', function(){
+                                var _self = $(this),
+                                    i = _self.attr('data-value'),
+                                    gV = Start.GF('group'),
+                                    gVArr = (gV == '' || gV == null) ? new Array() : gV.split(',');
+                                if(_self.hasClass('active') && gVArr.indexOf(i) > -1){
+                                    gVArr.remove(i);
+                                    _self.removeClass('active');
+                                }else {
+                                    gVArr.push(i);
+                                    _self.addClass('active');
+                                }
+                                Start.SF('group', gVArr.join(','));
+                            });
+                        });
+                    }
+					function GC(c, e){
+					    GL(c, function(r){
+					        var arr = new Array();
+                            $.each(r, function(i, v){
+                                arr.push(v.code);
+                            });
+                            e(arr);
+                        });
+                    }
+                    function GL(c, e){
+					    Start.JP(Start.Gl, '?id=' + c, function(r){
+					        if(r.status != '0') return Native.dialog.msg(e.msg, 2000), false;
+                            e(r);
+                        });
+                    }
+                    Start.E();
+                });
+				return this;
+			},
+			T: function(){
+			    Start.J(Start.Tl, function(e){
+			        var a = '<li data-index="0">不限</li>';
+			        $.each(e, function(i, v){
+			            a += '<li data-index="' + v.sortID + '">' + v.sortName + '</li>'
+					});
+			        $('.type .list').html(a);
+                    $('.type .list li').on('click', function(){
+                        var _self = $(this),
+                            i = _self.attr('data-index');
+                        Start.SF("type", i);
+                        _self.addClass('active').siblings().removeClass('active');
+                    });
+				});
+			    return this;
+			},
+			P: function(){
+				$('.page a').on('click', function(){
+					var u = SERVER + this.getAttribute('data-url'),
+							l = Native.dialog.load();
+					Start.G(u, {
+						type: 'GET',
+						dataType: 'JSON'
+					}, function(e){
+						Native.dialog.close(l);
+						if(!e) return Native.dialog.msg('Loading Error. QAZ', 2000), false;
+						if(e.status != '0') return Native.dialog.msg(e.msg, 2000), false;
+						var h = Start.H(e.data);
+						$('.products .result .count').html('共' + e.count + '条记录');
+						$('.products dl').html(h);
+						$('.page-content').html(e.page);
+						$('input[name="page"]').val(e.nPage);
+						Start.P();
+					});
+				});
+				$('.lazy_img').lazyload({effect:'fadeIn'});
+				return this;
+			},
+			I: function(){
+				var l = Native.dialog.load(),
+						d = $('form[name="search-form"]').serialize();
+				Start.G(Start.Pl, {
+					type: 'GET',
+					dataType: 'JSON',
+					data: d
+				}, function(e){
+					Native.dialog.close(l);
+					if(!e) return Native.dialog.msg('Loading Error. QAZ', 2000), false;
+					if(e.status != '0') return Native.dialog.msg('', 2000), false;
+					var h = Start.H(e.data);
+					$('.products .result .count').html('共' + e.count + '条记录');
+					$('.products dl').html(h);
+					$('.page-content').html(e.page);
+					$('input[name="page"]').val(e.nPage);
+					Start.P();
+				});
+				return this;
+			},
+			SFO: function(e){
+			    if(typeof e.k === 'string')
+			        $('input[name="keyword"]').val(e.k);
+				if(typeof e.c === 'string')
+                    $('input[name="class"]').val(e.c);
+				if(typeof e.t  === 'string')
+                    $('input[name="type"]').val(e.t);
+				if(typeof e.r  === 'string')
+                    $('input[name="price-range"]').val(e.r);
+				if(typeof e.g  === 'string')
+                    $('input[name="group"]').val(e.g);
+				if(typeof e.p  === 'string')
+				    $('input[name="page"]').val(e.p);
+			},
+			SF: function(n, v){
+				$('input[name="' + n + '"]').val(v);
+			},
+			GF: function(n){
+				return $('input[name="' + n + '"]').val();
+			},
+			E: function(){
+                $('form[name="search-form"]').on('submit', function(){
+                    $('input[name="page"]').val('');
+                    Start.I();
+                    return false;
+                });
+			    $('.clear-condition').on('click', function(){
+			        Start.SFO({"k": "", "c": "", "t": "", "r": "", "g": "", "p": ""});
+					$('input[name="low"]').val('');
+					$('input[name="heat"]').val('');
+					$('.class .list li').removeClass('active');
+                    $('.group .list li').removeClass('active');
+                    $('.price .list li').removeClass('active');
+                    $('.type .list li').removeClass('active');
+                    Start.C().T().I();
+				});
+			    $('.range-btn').on('click', function(){
+					var arr = [Start.GF("low"), Start.GF("heat")];
+					if(arr[0] == '' && arr[1] == '')
+					    return Native.dialog.msg("请输入数值再确定", 2000), false;
+					if(arr[0] == '') arr[0] = '0';
+					if(arr[1] == '') arr[1] = '9999';
+					var priceRange =arr.join(',');
+					Start.SF("price-range", priceRange);
+				});
+                $('.clear-range').on('click', function(){
+                    Start.SFO({"r": ""});
+                    $('input[name="low"]').val('');
+                    $('input[name="heat"]').val('');
+                });
+				$('.price .list li').on('click', function(){
+				    var _self = $(this),
+						i = _self.attr('data-index');
+					Start.SF('price-range', i);
+					_self.addClass('active').siblings().removeClass('active');
+				});
+			    return this;
+			},
+			H: function(e){
+				if(e == '' || e == null) return '';
+				var result = '';
+				$.each(e, function(i, v){
+					result += '<dd class="products-list"><ul><li class="id">' + v.number + '</li><li class="name">' + v.title + '</li><li class="price">' + v.price + '</li><li class="class">' + v.classID + '</li><li class="group" title="' + v.storage + '">' + v.storage + '</li><li class="time">' + (v.linkman_mobile || '未填写') + '</li><li class="pic"><img src="../resource/image/blank.gif" class="lazy_img" data-original="' + v.preview + '"></li><li class="see"><a href="' + v.url + '" target="_blank">查看</a></li></ul></dd>';
+				});
+				return result;
+			},
+			G: function(u, p, c){
+				$.ajax(u, p).then(function(e){
+					c(e);
+				}, function(e){
+					c(false);
+				});
+				return this;
+			}
+		};
+        Array.prototype.indexOf = function(val){
+            var i = 0, n;
+            while(n = this[i]){
+                if(n == val) return i;
+                i++;
+            }
+            return -1;
+        };
+        Array.prototype.remove = function(val){
+            var i = this.indexOf(val);
+            if(i > -1){
+                this.splice(i);
+            }
+        };
+        Start.C().T().I();
+	}(jQuery, window, Native));
+</script>
+</html>
