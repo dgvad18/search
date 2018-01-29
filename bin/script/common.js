@@ -15,6 +15,8 @@
 			return layer.close(e);
 		}
 	};
+
+	var xxxx = 123;
 	
 	
 	global.Native = Native;
