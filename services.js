@@ -3,7 +3,7 @@
 
 const express = require("express");
 const app = express();
-const Router = require("./application/Router");
+const Router = require("./app/Router");
 
 app.use(Router);
 

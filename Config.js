@@ -6,8 +6,12 @@ module.exports = {
         "APPEND_STR": "biaou_search"
     },
     "DB_SETTING":{
-
+        "user": "sydzsw",
+        "password": "kuku2013",
+        "server": "117.135.131.177",
+        "database": "sydzsw",
+        "options": {
+            "encrypt": true
+        }
     }
 };
-
-console.log(process.cwd());
