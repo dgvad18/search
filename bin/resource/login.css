@@ -1,0 +1,46 @@
+body{
+    background: url("../resource/image/login-bg.jpg") no-repeat center;
+    background-size: cover;
+    height: 900px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.login{
+    width: 314px !important;
+    height: 300px;
+    background-color: #ffffff !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 40px;
+    border-radius:4px;
+}
+.login .login-list input{
+    width:300px;
+    height:30px;
+    margin-bottom: 15px;
+}
+.login .login-list input[name="verify"]{
+    width: 165px;
+    margin-right: 15px;
+}
+.login .login-list .verify{
+    width: 120px;
+    float: right;
+}
+.login .login-list .verify img{
+    width: 120px;
+    height: 40px;
+}
+.login .login-but{
+    margin: 0 auto;
+    display: block;
+    width: 314px;
+    background-color: #00ac65;
+    height: 40px;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+}

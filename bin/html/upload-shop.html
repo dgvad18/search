@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商城上传</title>
+    <link rel="stylesheet" type="text/css" href="../resource/upload-shop.css">
+    <link rel="stylesheet" type="text/css" href="../resource/bootstrap.min.css">
+    <script src="../lib/bootstrap.min.js"></script>
+</head>
+<body>
+<!--<div class="header">-->
+    <!--<ul class="nav">-->
+        <!--<li>首页</li>-->
+        <!--<li>内部商标搜索</li>-->
+        <!--<li>商标信息查询</li>-->
+        <!--<li>商标上传</li>-->
+        <!--<li>商城查询</li>-->
+        <!--<li>商城上传</li>-->
+    <!--</ul>-->
+<!--</div>-->
+<div class="container" style="margin-top: 20px;">
+    <form action="" class="form-horizontal">
+        <div class="title">商城基础信息</div>
+        <div class="control-group">
+            <label for="name" class="control-label" name="name-label">商城名称</label>
+            <div class="controls inp-list">
+                <input type="text" id="name" name="name" placeholder="">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" name="trademarkType-label">商标类型</label>
+            <div class="controls choice">
+                <label class="radio-inline">
+                    <input type="radio" name="trademarkType" id="R-trademark" value="R商标"> R商标
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="trademarkType" id="TM-trademark" value="TM商标"> TM商标
+                </label>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" name="select-label"></label>
+            <select class="form-control" name="industryCategory">
+                <option value="">请选择行业类别</option>
+                <option value="服饰鞋包">服饰鞋包</option>
+                <option value="美容护理">美容护理</option>
+                <option value="3C数码类">3C数码类</option>
+                <option value="游戏/话费">游戏/话费</option>
+                <option value="母婴用品">母婴用品</option>
+                <option value="运动/户外">运动/户外</option>
+                <option value="家装家饰">家装家饰</option>
+                <option value="食品/保健">食品/保健</option>
+                <option value="珠宝/首饰">珠宝/首饰</option>
+                <option value="家居用品">家居用品</option>
+                <option value="生活服务">生活服务</option>
+                <option value="汽车配件">汽车配件</option>
+                <option value="玩乐/收藏">玩乐/收藏</option>
+                <option value="书籍音像">书籍音像</option>
+                <option value="其他行业">其他行业</option>
+            </select>
+            <select class="form-control" name="shopType">
+                <option value="">请选择店铺类型</option>
+                <option value="天猫">天猫</option>
+                <option value="京东">京东</option>
+                <option value="企业淘宝">企业淘宝</option>
+                <option value="蘑菇街">蘑菇街</option>
+                <option value="其他平台">其他平台</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label class="control-label" name="select-label"></label>
+            <select class="form-control" name="trademarkCategory">
+                <option value="">请选择商标类别</option>
+                <option value="01类-化学原料商标">01类-化学原料商标</option>
+                <option value="02类-颜料油漆商标">02类-颜料油漆商标</option>
+                <option value="03类-日化用品商标">03类-日化用品商标</option>
+                <option value="04类-燃料油脂商标">04类-燃料油脂商标</option>
+                <option value="05类-医药类别商标">05类-医药类别商标</option>
+                <option value="06类-金属材料商标">06类-金属材料商标</option>
+                <option value="07类-机械设备商标">07类-机械设备商标</option>
+                <option value="08类-手工器械商标">08类-手工器械商标</option>
+                <option value="09类-科学仪器商标">09类-科学仪器商标</option>
+                <option value="10类-医疗器械商标">10类-医疗器械商标</option>
+                <option value="11类-灯具空调商标">11类-灯具空调商标</option>
+                <option value="12类-运输工具商标">12类-运输工具商标</option>
+                <option value="13类-军火烟火商标">13类-军火烟火商标</option>
+                <option value="14类-珠宝钟表商标">14类-珠宝钟表商标</option>
+                <option value="15类-乐器类别商标">15类-乐器类别商标</option>
+                <option value="16类-办公用品商标">16类-办公用品商标</option>
+                <option value="17类-橡胶制品商标">17类-橡胶制品商标</option>
+                <option value="18类-皮革皮具商标">18类-皮革皮具商标</option>
+                <option value="19类-建筑材料商标">19类-建筑材料商标</option>
+                <option value="20类-家具类别商标">20类-家具类别商标</option>
+                <option value="21类-厨房洁具商标">21类-厨房洁具商标</option>
+                <option value="22类-绳网袋篷商标">22类-绳网袋篷商标</option>
+                <option value="23类-纱线丝类商标">23类-纱线丝类商标</option>
+                <option value="24类-布料床单商标">24类-布料床单商标</option>
+                <option value="25类-服装鞋帽商标">25类-服装鞋帽商标</option>
+                <option value="26类-钮扣拉链商标">26类-钮扣拉链商标</option>
+                <option value="27类-地毯席垫商标">27类-地毯席垫商标</option>
+                <option value="28类-健身器材商标">28类-健身器材商标</option>
+                <option value="29类-食品类别商标">29类-食品类别商标</option>
+                <option value="30类-方便食品商标">30类-方便食品商标</option>
+                <option value="31类-饲料种籽商标">31类-饲料种籽商标</option>
+                <option value="32类-啤酒饮料商标">32类-啤酒饮料商标</option>
+                <option value="33类-酒商标">33类-酒商标</option>
+                <option value="34类-烟草烟具商标">34类-烟草烟具商标</option>
+                <option value="35类-广告销售商标">35类-广告销售商标</option>
+                <option value="36类-金融物管商标">36类-金融物管商标</option>
+                <option value="37类-建筑修理商标">37类-建筑修理商标</option>
+                <option value="38类-通讯服务商标">38类-通讯服务商标</option>
+                <option value="39类-运输贮藏商标">39类-运输贮藏商标</option>
+                <option value="40类-材料加工商标">40类-材料加工商标</option>
+                <option value="41类-教育娱乐商标">41类-教育娱乐商标</option>
+                <option value="42类-网站服务商标">42类-网站服务商标</option>
+                <option value="43类-餐饮住宿商标">43类-餐饮住宿商标</option>
+                <option value="44类-医疗园艺商标">44类-医疗园艺商标</option>
+                <option value="45类-社会服务商标">45类-社会服务商标</option>
+            </select>
+            <select class="form-control" name="platformType">
+                <option>请选择平台类型</option>
+                <option value="">请选择</option>
+                <option value="天猫">天猫</option>
+                <option value="京东">京东</option>
+                <option value="一号店">一号店</option>
+                <option value="苏宁">苏宁</option>
+                <option value="国美">国美</option>
+                <option value="美丽说">美丽说</option>
+                <option value="亚马逊">亚马逊</option>
+                <option value="当当网">当当网</option>
+                <option value="阿里巴巴">阿里巴巴</option>
+                <option value="蘑菇街">蘑菇街</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="salePrice" class="control-label" name="salePrice-label">出售价格</label>
+            <div class="controls inp-list">
+                <input type="text" id="salePrice" name="salePrice" placeholder="如：xx万">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="turnover" class="control-label" name="turnover-label">当前营业额</label>
+            <div class="controls inp-list">
+                <input type="text" id="turnover" name="turnover" placeholder="如：xx万">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="settledCategory" class="control-label" name="settledCategory-label">入驻类目</label>
+            <div class="controls inp-list">
+                <input type="text" id="settledCategory" name="settledCategory" placeholder="">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="settledTime" class="control-label">入驻时间</label>
+            <div class="controls inp-list">
+                <input type="text" id="settledTime" name="settledTime" placeholder="如：2006年6月">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" name="priceRange-label">价格范围</label>
+            <select class="form-control" name="priceRange">
+                <option value="">请选择</option>
+                <option value="10万以下">10万以下</option>
+                <option value="10万-15万">10万-15万</option>
+                <option value="15万-20万">15万-20万</option>
+                <option value="20万-30万">20万-30万</option>
+                <option value="30万以上">30万以上</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label  class="control-label">是否小规模纳税人</label>
+            <div class="controls choice">
+                <label class="radio-inline">
+                    <input type="radio" name="taxpayer" id="taxpayer1" value="是"> 是
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="taxpayer" id="taxpayer2" value="否"> 否
+                </label>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">店铺所在地</label>
+            <select class="form-control" name="province"></select>
+            <select class="form-control" name="region"></select>
+        </div>
+        <div class="control-group">
+            <label for="target" class="control-label" name="target-label">本年指标</label>
+            <div class="controls inp-list">
+                <input type="text" id="target" name="target" placeholder="如完成或未完成">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="bond" class="control-label">保证金</label>
+            <div class="controls inp-list">
+                <input type="text" id="bond" name="bond" placeholder="">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="serviceCharge" class="control-label">服务费</label>
+            <div class="controls inp-list">
+                <input type="text" id="serviceCharge" name="serviceCharge" placeholder="">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="points" class="control-label">扣分情况</label>
+            <div class="controls inp-list">
+                <input type="text" id="points" name="points" placeholder="一般违规：0 分 严重违规：0 分 售假违规：0 分">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="shopLabel" class="control-label">店铺标签</label>
+            <div class="controls inp-list">
+                <input type="text" id="shopLabel" name="shopLabel" placeholder="如：公司认证，可当面交易，动态全红">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="exampleInputFile" class="control-label">店铺评分</label>
+            <div class="controls inp-list">
+                <input type="file" id="exampleInputFile" name="exampleInputFile">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="introduce" class="control-label">店铺介绍</label>
+            <div class="controls inp-list">
+                <textarea type="file" id="introduce" name="introduce"></textarea>
+            </div>
+        </div>
+        <div class="title">联系人信息</div>
+        <div class="control-group">
+            <label for="contactsName" class="control-label" name="contactsName-label">联系人姓名</label>
+            <div class="controls inp-list">
+                <input type="text" id="contactsName" name="contactsName" placeholder="请如实填写">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="contactsPhone" class="control-label" name="contactsPhone-label">联系人电话</label>
+            <div class="controls inp-list">
+                <input type="text" id="contactsPhone" name="contactsPhone" placeholder="请填写常用的电话号码">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="contactsEmail" class="control-label">电子邮件</label>
+            <div class="controls inp-list">
+                <input type="text" id="contactsEmail" name="contactsEmail" placeholder="">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="website" class="control-label">店铺网址</label>
+            <div class="controls inp-list">
+                <input type="text" id="website" name="website" placeholder="http://">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="code" class="control-label" name="code-label">邮政编码</label>
+            <div class="controls inp-list">
+                <input type="text" id="code" name="code" placeholder="">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="address" class="control-label" name="address-label">联系人地址</label>
+            <div class="controls inp-list">
+                <input type="text" id="address" name="address" placeholder="如：北京市海淀区成府路××号">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="remarks" class="control-label">销售备注</label>
+            <div class="controls inp-list">
+                <textarea type="file" id="remarks" name="remarks"></textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <label  class="control-label">是否推荐</label>
+            <div class="controls choice">
+                <label class="radio-inline">
+                    <input type="checkbox" name="recommend" id="recommend">
+                </label>
+            </div>
+        </div>
+        <button type="submit">确定保存</button>
+    </form>
+</div>
+<!--店铺所在地二级联动-->
+<script src="../lib/PCASClass.js"></script>
+<script language="javascript" defer>
+    new PCAS("province","region");
+</script>
+<!--------------------------------->
+</body>
+</html>

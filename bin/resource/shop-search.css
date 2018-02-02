@@ -1,0 +1,156 @@
+body{
+    background-color: #fff !important;
+    min-width: 500px;
+}
+.shop-search{
+    width:98%;
+    margin: 0 1%;
+}
+.shop-search fieldset{
+    border: 1px solid #e2e2e2;
+    margin-bottom: 10px;
+}
+.shop-search fieldset legend{
+    margin-left: 20px;
+    padding: 0 10px;
+    font-size: 20px;
+    font-weight: 300;
+    color: #00ae66;
+    border: 0 !important;
+    width:auto !important;
+}
+.shop-search fieldset dl{
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+}
+.shop-search fieldset dt{
+    width:106px;
+    line-height: 30px;
+    font-size: 15px;
+    color: #394043;
+    font-weight: bold;
+}
+.shop-search fieldset dl dd{
+    overflow: hidden;
+    margin-left: 120px;
+}
+.shop-search fieldset dl dd a{
+    display: block;
+    float: left;
+    height: 30px;
+    padding: 0 10px;
+    margin-right: 5px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #394043;
+    text-decoration: none;
+}
+.shop-search fieldset dl dd a:hover{
+    background-color: #00ae66;
+    color: #ffffff;
+}
+.shop-search fieldset dl dd.price{
+    line-height: 30px;
+}
+.shop-search fieldset dl dd.price input{
+    width:40px;
+    height:20px;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    border: 1px solid #e2e2e2;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    text-align: center;
+}
+.shop-search fieldset dl dd.price button{
+    height: 24px;
+    margin: 4px 0 0 15px;
+    padding: 0 15px;
+    font-size: 12px;
+    color: #33BE85;
+    background-color: #e1f5ed;
+    cursor: pointer;
+    border: 0;
+}
+.shop-search fieldset dl dd.price span{
+    font-size: 12px;
+    color: #555555;
+}
+.shop-search fieldset dl dd.trademark-search{
+    margin-bottom: 25px !important;
+}
+.shop-search fieldset dl dd.trademark-search input{
+    margin: 0 10px;
+    width: 177px;
+    height: 26px;
+    overflow: hidden;
+    border: 1px solid #f1f1f1;
+    text-indent: 10px;
+    color: #394043;
+    -webkit-transition: all .25s linear;
+    padding: 0 !important;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.shop-search fieldset dl dd.trademark-search button{
+    height: 26px;
+    margin: 0px 0 0 2px;
+    padding: 0 15px;
+    font-size: 12px;
+    color: #33BE85;
+    background-color: #e1f5ed;
+    cursor: pointer;
+    border: 0;
+}
+.shop-search .form-list .result{
+    font-size:15px;
+    line-height: 50px;
+}
+.shop-search .form-list .result strong{
+    color: #3f81eb;
+}
+.shop-search .form-list .field{
+    width: 100%;
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #f1f1f1;
+    -webkit-box-sizing: border-box;
+    background-color: #f4f7f9;
+}
+.shop-search .form-list .field span{
+    display: block;
+    float: left;
+    width: 12%;
+    text-align: center;
+    border-right: 1px solid #f1f1f1;
+    font-size: 13px;
+    color: #849aae;
+}
+.shop-search .form-list dl{
+    width: 100%;
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #f1f1f1;
+    -webkit-box-sizing: border-box;
+    margin: 0 !important;
+}
+.shop-search .form-list dl dd{
+    display: block;
+    float: left;
+    width: 12%;
+    text-align: center;
+    border-right: 1px solid #f1f1f1;
+    font-size: 13px;
+    color: #849aae;
+    line-height: 40px;
+    margin: 0 !important;
+}
