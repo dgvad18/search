@@ -9,7 +9,7 @@
 <body>
 <div class="container login">
     <h3 class="text-center">登录</h3>
-    <form action="">
+    <form action="" name="">
         <div class="login-list text-center">
             <input type="text" name="name" placeholder="请输入账号">
         </div>
@@ -30,6 +30,7 @@
 <script>
     (function(){
         $(document).ready(function () {
+
             var name = $("input[name='name']").val(),
                 password = $("input[name='password']").val(),
                 verify = $("input[name='verify']").val();
